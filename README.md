@@ -1,24 +1,36 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- get all links
 
-Things you may want to cover:
+```
+{
+  allLinks {
+    id
+    url
+    description
+  }
+}
+```
 
-* Ruby version
 
-* System dependencies
+- create mutation
 
-* Configuration
+```
+mutation{
+  createLink(
+    url:"http://yahoo.co.jp",
+    description:"hoge"
+  ) {
+    id
+    url
+    description
+  }
+}
+```
 
-* Database creation
+- run test
 
-* Database initialization
+```
+./bin/rspec test test/graphql/resolvers/create_link_test.rb
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
