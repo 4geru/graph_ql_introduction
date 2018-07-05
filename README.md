@@ -35,18 +35,57 @@ mutation{
 
 ```
 
+- create_user
 
 ```
 mutation{
-  signinUser(
-    email: {
-      email: "hoge@gmail.com",
-      passowrd: "123456"
-    }
+  createUser(
+    name: "Test User",
+      authProvider: {
+        email: {
+          email: "hoge@example.com",
+          password: "123456"
+        }
+      }
   ) {
+    id
+    email
+    name
+  }
+}
+```
+
+- sign_in
+
+```
+mutation {
+  signinUser(email: {email: "hoge@example.com", password: "123456"}) {
     token
-    user{
+    user {
       id
+      email
+      name
+    }
+  }
+}
+```
+
+- allLinks
+
+```
+query{
+  allLinks {
+    id
+    url
+    description
+    postedBy {
+      id
+      name
+      votes {
+        link {
+          description
+        }
+      }
     }
   }
 }
